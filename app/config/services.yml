@@ -1,0 +1,12 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+services:
+    app.atlanteit.form.employee:
+        class: AtlanteIt\EmployeeBundle\Form\EmployeeType
+        arguments: ['@security.token_storage']
+        tags:
+            - {name: form.type}
+    twig.extension.toastr:
+        class: AtlanteIt\EmployeeBundle\Twig\Extension\ToastrExtension
+        tags:
+            - { name: twig.extension }

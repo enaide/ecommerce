@@ -1,0 +1,13 @@
+{{ form_start(form, {'attr':{'id':id|default('form')}}) }}
+    {{ form_widget(form) }}
+    {% if with_submit is not defined or with_submit == true %}
+        <button class="btn-danger btn btn-xs text-white"><i class="fa fa-trash-o"></i> delete</button>
+    {% endif %}
+{{ form_end(form) }}
+
+{{ include('EmployeeBundle:forms:modal.html.twig') }}
+
+<script>
+
+
+</script>

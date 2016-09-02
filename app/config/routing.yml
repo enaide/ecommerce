@@ -1,0 +1,18 @@
+usuario_login:
+    path: /login
+    defaults: { _controller: EmployeeBundle:Employee:login }
+
+usuario_login_check:
+    path: /login_check
+
+usuario_logout:
+    path: /logout
+
+employee_role:
+    resource: "@EmployeeBundle/Controller/"
+    type:     annotation
+
+
+employee:
+    resource: "@EmployeeBundle/Controller/"
+    type:     annotation

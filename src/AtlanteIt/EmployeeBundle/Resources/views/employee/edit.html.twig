@@ -1,0 +1,184 @@
+{% extends 'frontend.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/plugins/iCheck/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css') }}">
+
+{% endblock %}
+
+{% block content_main %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Basic form <small>Simple login form example</small></h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#">Config option 1</a>
+                            </li>
+                            <li><a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    {{ form_start(form, { 'attr':{'novalidate':'novalidate', 'class':'form-horizontal'} }) }}
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <img alt="image" class="img-thumbnail " src="{{ asset('assets/dist/img/manager_filled_100px.png') }}" />
+                            General Information
+                        </label>
+
+
+                        <div class="col-sm-10">
+                            {{ form_widget(form.photopath, {'attr' : {'class' : 'form-control m-b', 'placeholder':'photo path' } }) }}
+                            {{ form_widget(form.firstname, {'attr' : {'class' : 'form-control m-b', 'placeholder':'First Name' } }) }}
+                            {{ form_widget(form.lastname, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Last Name' } }) }}
+                            {{ form_widget(form.email, {'attr' : {'class' : 'form-control m-b', 'placeholder':'e-mail' } }) }}
+                            {{ form_widget(form.birthdate, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Birt Date' } }) }}
+                            {{ form_widget(form.plainPassword.first, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Password' } }) }}
+                            {{ form_widget(form.plainPassword.second, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Repeat Password' } }) }}
+                            <span class="text-danger">
+                                {{ form_errors(form.firstname) }}
+                                {{ form_errors(form.lastname) }}
+                                {{ form_errors(form.email) }}
+                                {{ form_errors(form.birthdate) }}
+                                {{ form_errors(form.plainPassword.first) }}
+                                {{ form_errors(form.plainPassword.second) }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-justify">
+                            <img alt="image" class="img-thumbnail " src="{{ asset('assets/dist/img/work_32px.png') }}" />
+                            Appliance
+                        </label>
+                        <div class="col-sm-10">
+                            {{ form_widget(form.title, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Title'  } }) }}
+                            {{ form_widget(form.titleofcourtesy, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Title of courtesy'  } }) }}
+                            {{ form_widget(form.salary, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Salary'  } }) }}
+                            {{ form_widget(form.reportsTo, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Report to'  } }) }}
+                            {{ form_widget(form.notes, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Notes'  } }) }}
+                            {{ form_widget(form.hiredate, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Hire date'  } }) }}
+                            <span class="text-danger">
+                                {{ form_errors(form.title) }}
+                                {{ form_errors(form.titleofcourtesy) }}
+                                {{ form_errors(form.salary) }}
+                                {{ form_errors(form.reportsTo) }}
+                                {{ form_errors(form.notes) }}
+                                {{ form_errors(form.hiredate) }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <img alt="image" class="img-thumbnail " src="{{ asset('assets/dist/img/geo_fence_32px.png') }}" />
+                            Location
+                        </label>
+
+                        <div class="col-sm-10">
+                            {{ form_widget(form.homephone, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Home phone' } }) }}
+                            {{ form_widget(form.extension, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Extension' } }) }}
+                            {{ form_widget(form.address, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Address'  } }) }}
+                            {{ form_widget(form.postalcode, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Postal Code'  } }) }}
+                            {{ form_widget(form.city, {'attr' : {'class' : 'form-control m-b', 'placeholder':'City'  } }) }}
+                            {{ form_widget(form.region, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Region'  } }) }}
+                            {{ form_widget(form.country, {'attr' : {'class' : 'form-control m-b', 'placeholder':'Country'  } }) }}
+                            <span class="text-danger">
+                                {{ form_errors(form.homephone) }}
+                                {{ form_errors(form.extension) }}
+                                {{ form_errors(form.address) }}
+                                {{ form_errors(form.postalcode) }}
+                                {{ form_errors(form.city) }}
+                                {{ form_errors(form.region) }}
+                                {{ form_errors(form.country) }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            <img alt="image" class="img-thumbnail " src="{{ asset('assets/dist/img/user_shield_32px.png') }}" />
+                            Privileges
+                        </label>
+
+                        <div class="col-sm-10">
+                            {% for role in form.RolesCollection %}
+                                <div class="i-checks">
+                                    <label class="">
+                                        <div class="icheckbox_square-green" style="position: relative;">
+                                            {{ form_widget(role) }}
+                                            <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;">
+
+                                            </ins>
+                                        </div>
+                                        <i></i> {{ form_label(role) }}
+                                    </label>
+                                </div>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+
+                            Status Information
+                        </label>
+
+                        <div class="col-sm-10">
+                            <div class="i-checks">
+                                <label>
+                                    <div class="icheckbox_square-green" >
+                                        {{ form_widget(form.isActive) }}
+                                    </div> {{ form_label(form.isActive) }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button type="submit" class="btn btn-success">Sign in</button>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/dist/js/plugins/iCheck/icheck.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+{% endblock javascripts %}

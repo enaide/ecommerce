@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Employee</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ employee.id }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ employee.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ employee.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ employee.title }}</td>
+            </tr>
+            <tr>
+                <th>Titleofcourtesy</th>
+                <td>{{ employee.titleofcourtesy }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{% if employee.birthdate %}{{ employee.birthdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hiredate</th>
+                <td>{% if employee.hiredate %}{{ employee.hiredate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ employee.address }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ employee.city }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ employee.region }}</td>
+            </tr>
+            <tr>
+                <th>Postalcode</th>
+                <td>{{ employee.postalcode }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ employee.country }}</td>
+            </tr>
+            <tr>
+                <th>Homephone</th>
+                <td>{{ employee.homephone }}</td>
+            </tr>
+            <tr>
+                <th>Extension</th>
+                <td>{{ employee.extension }}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ employee.notes }}</td>
+            </tr>
+            <tr>
+                <th>Reportsto</th>
+                <td>{{ employee.reportsTo }}</td>
+            </tr>
+            <tr>
+                <th>Photopath</th>
+                <td>{{ employee.photopath }}</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>{{ employee.salary }}</td>
+            </tr>
+            <tr>
+                <th>Isactive</th>
+                <td>{% if employee.isActive %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ employee.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('employee_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('employee_edit', { 'id': employee.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

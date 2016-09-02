@@ -1,0 +1,38 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    encoders:
+        AtlanteIt\EmployeeBundle\Entity\Employee:
+            algorithm: bcrypt
+            cost: 12
+
+    providers:
+        our_db_provider:
+            entity:
+                class: EmployeeBundle:Employee
+                property: firstname
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            pattern: ^/
+
+            form_login:
+                login_path: usuario_login
+                check_path: usuario_login_check
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: /logout
+                target: /
+
+            provider: our_db_provider
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }

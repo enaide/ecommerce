@@ -1,0 +1,95 @@
+{% extends 'frontend.html.twig' %}
+
+{% block content_main %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Striped Table </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#">Config option 1</a>
+                            </li>
+                            <li><a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class=" table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="footable-sortable">{{ knp_pagination_sortable(employees, 'Employee Name ', 'e.firstname') }}<i class="fa fa-sort"></i></th>
+                                <th class="footable-sortable">{{ knp_pagination_sortable(employees, 'Title ', 'e.title') }}<i class="fa fa-sort"></i></th>
+                                <th class="footable-sortable">Hire date <i class="fa fa-sort"></i></th>
+                                <th class="footable-sortable">{{ knp_pagination_sortable(employees, 'Salary ', 'e.salary') }}<i class="fa fa-sort"></i></th>
+                                <th class="footable-sortable">{{ knp_pagination_sortable(employees, 'Home phone ', 'e.homephone') }}<i class="fa fa-sort"></i></th>
+                                <th>Status</th>
+                                <th class="text-right" data-sort-ignore="true">Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for employee in employees %}
+                            <tr class="text-success" data-id ={{ employee.id }}>
+                                <td>
+                                    {{ employee.firstname ~' '~ employee.lastname }}
+                                </td>
+                                <td>
+                                    {{ employee.title }}
+                                </td>
+                                <td>
+                                    {% if employee.birthdate %}{{ employee.birthdate|date('Y-m-d') }}{% endif %}
+                                </td>
+                                <td>
+                                    {{ employee.salary }}
+                                </td>
+                                <td>
+                                    {{ employee.homephone }}
+                                </td>
+                                <td>
+                                    <span class="label label-primary">Enable</span>
+                                </td>
+                                <td class="text-right">
+                                    <div class="btn-group">
+                                        <a class="btn-success btn btn-xs text-white" href="{{ path('employee_show', {id:employee.id}) }}"><i class="fa fa-eye"></i> View</a>
+                                        <a class="btn btn-warning btn-xs text-white" href="{{ path('employee_edit', {id:employee.id}) }}"><i class="fa fa-pencil"></i> Edit </a>
+                                        <button class="btn-danger btn btn-xs text-white"><i class="fa fa-trash-o"></i> delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="ibox-footer">
+                    <div class="clearfix">
+                        Showing 1 to 10 of 57 entries
+                        <div class=" pull-right">
+                            {{ knp_pagination_render(employees) }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{ include('EmployeeBundle:forms:form.html.twig', {id:'form-delete', form:deleteFormAjax, with_submit:false}) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/dist/js/custom/delete-employee.js') }}"></script>
+{% endblock javascripts %}
